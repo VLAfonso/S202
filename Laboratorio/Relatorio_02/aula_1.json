@@ -1,0 +1,12 @@
+{
+    "professor":{
+        "nome": "Renzo"
+    },
+    "assunto": "Análise de Dados",
+    "alunos":[
+        {"nome": "Lanna"},
+        {"nome": "Lucas"},
+        {"nome": "Petterson"},
+        {"nome": "Virgínia"}
+    ]
+}

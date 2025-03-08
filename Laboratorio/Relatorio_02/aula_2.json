@@ -1,0 +1,12 @@
+{
+    "professor":{
+        "nome": "Jonas"
+    },
+    "assunto": "Sistemas Operacionais",
+    "alunos":[
+        {"nome": "Beatriz"},
+        {"nome": "Davi"},
+        {"nome": "Murilo"},
+        {"nome": "Virgínia"}
+    ]
+}
