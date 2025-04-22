@@ -1,0 +1,50 @@
+Questão 01
+
+Elabore consultas em Neo4j para obter os seguintes resultados:
+
+1. Todos os registros do banco de dados.
+MATCH (n) RETURN n
+
+2. Jogos lançados após o ano de 2012.
+MATCH (g:Game) WHERE g.ano > 2012 RETURN g
+
+3. Jogos do gênero de terror.
+MATCH (g:Game) WHERE g.genero = 'Terror' RETURN g
+
+4. Jogos com uma nota igual ou maior que 7.
+MATCH (:Jurado)-[j:JOGOU]->(g:Game) WHERE j.nota >= 7 RETURN DISTINCT g
+
+
+
+Questão 02
+
+1. Acrescente quatro novos jogos ao banco de dados.
+CREATE(g:Game{titulo:'Hay Day',genero:'Simulação',ano:2012});
+CREATE(g:Game{titulo:'Far Cry 4',genero:'Ação',ano:2014});
+CREATE(g:Game{titulo:'Stardew Valley',genero:'Simulação',ano:2016});
+CREATE(g:Game{titulo:'Microsoft Solitaire Collection',genero:'Quebra-cabeça',ano:2012});
+
+2. Adicione três novos jurados ao banco de dados.
+CREATE(j:Jurado{nome:'Ana'});
+CREATE(j:Jurado{nome:'Clara'});
+CREATE(j:Jurado{nome:'Beatriz'});
+
+3. Estabeleça as relações entre os jurados e os jogos que eles avaliaram, incluindo a nota e a quantidade de horas jogadas.
+MATCH(j:Jurado{nome:'Ana'}),(g:Game{titulo:'Hay Day'})
+CREATE(j)-[:JOGOU{nota:8, horas:300}]->(g);
+
+MATCH(j:Jurado{nome:'Ana'}),(g:Game{titulo:'Stardew Valley'})
+CREATE(j)-[:JOGOU{nota:10, horas:2000}]->(g);
+
+MATCH(j:Jurado{nome:'Clara'}),(g:Game{titulo:'Far Cry 4'})
+CREATE(j)-[:JOGOU{nota:9, horas:600}]->(g);
+
+MATCH(j:Jurado{nome:'Clara'}),(g:Game{titulo:'Microsoft Solitaire Collection'})
+CREATE(j)-[:JOGOU{nota:8, horas:500}]->(g);
+
+MATCH(j:Jurado{nome:'Beatriz'}),(g:Game{titulo:'Microsoft Solitaire Collection'})
+CREATE(j)-[:JOGOU{nota:7, horas:12}]->(g);
+
+MATCH(j:Jurado{nome:'Beatriz'}),(g:Game{titulo:'Stardew Valley'})
+CREATE(j)-[:JOGOU{nota:9, horas:115}]->(g);
+
